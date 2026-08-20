@@ -4,6 +4,13 @@
 PopCap `.pak` resource archives. It is independent from the Toolkit GUI and is
 designed for both small conversions and indexed access to large archives.
 
+## Installation
+
+```toml
+[dependencies]
+pak-archive = { git = "https://github.com/LambdaEd1th/pak-archive" }
+```
+
 ## Supported containers
 
 - PC flat archives XOR-obfuscated byte-for-byte with `0xF7`;
@@ -164,10 +171,17 @@ Disable optional Serde and TV/ZIP support when only flat PAK I/O is needed:
 
 ```toml
 [dependencies]
-pak-archive = { version = "0.1", default-features = false }
+pak-archive = {
+    git = "https://github.com/LambdaEd1th/pak-archive",
+    default-features = false,
+}
 ```
 
 The `fuzz/` package contains a `cargo-fuzz` decode/round-trip target. The test
 suite also covers fixed canonical bytes, legacy fields, malformed bounds,
 non-UTF-8 paths, TV metadata, strict alignment, lazy reads, and a byte-exact
 real PvZ `main.pak` when the local corpus is available.
+
+## License
+
+AGPL-3.0-or-later. See [LICENSE](LICENSE).

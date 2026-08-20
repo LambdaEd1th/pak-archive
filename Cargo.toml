@@ -7,8 +7,8 @@ authors = ["ed1th"]
 categories = ["encoding", "parser-implementations", "compression"]
 keywords = ["popcap", "pak", "archive", "plants-vs-zombies"]
 readme = "README.md"
-license.workspace = true
-repository.workspace = true
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/LambdaEd1th/pak-archive"
 description = "Pure Rust reader and writer for PopCap PAK resource archives"
 
 [features]
@@ -17,15 +17,18 @@ serde = ["dep:serde", "dep:serde_bytes"]
 tv = ["dep:crc32fast", "dep:zip"]
 
 [dependencies]
-flate2.workspace = true
-crc32fast = { workspace = true, optional = true }
-serde = { workspace = true, optional = true }
-serde_bytes = { workspace = true, optional = true }
-thiserror.workspace = true
-zip = { workspace = true, optional = true }
+flate2 = { version = "1.1", default-features = false, features = ["rust_backend"] }
+crc32fast = { version = "1.5", optional = true }
+serde = { version = "1", features = ["derive"], optional = true }
+serde_bytes = { version = "0.11", optional = true }
+thiserror = "2"
+zip = { version = "8", default-features = false, features = ["deflate-flate2-zlib-rs", "unreserved"], optional = true }
 
 [dev-dependencies]
-serde_json.workspace = true
+serde_json = { version = "1", features = ["float_roundtrip"] }
+
+[package.metadata.docs.rs]
+all-features = true
 
 [[bench]]
 name = "indexing"
