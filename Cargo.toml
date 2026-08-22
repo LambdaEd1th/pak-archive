@@ -2,7 +2,6 @@
 name = "pak-archive"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.88"
 authors = ["ed1th"]
 categories = ["encoding", "parser-implementations", "compression"]
 keywords = ["popcap", "pak", "archive", "plants-vs-zombies"]
