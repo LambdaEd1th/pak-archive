@@ -392,7 +392,7 @@ impl<R: Read + Seek> PakReader<R> {
             let mut zip_metadata = ZipEntryMetadata::new(compression);
             zip_metadata.set_unix_mode(file.unix_mode());
             zip_metadata.set_comment(file.comment());
-            for field in parse_zip_extra_fields(file.extra_data(), zip_index)? {
+            for field in parse_zip_extra_fields(file.extra_data().as_deref(), zip_index)? {
                 zip_metadata.add_extra_field(field);
             }
             entries.push(IndexedEntry {
